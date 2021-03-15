@@ -48,7 +48,7 @@ const render = () => {
 
   // pass in state.value as a value prop
   ReactDOM.render(
-    <App player1={ state.player1 } />,
+    <App player1={ state.player1 } player2={ state.player2 } />,
     document.getElementById("root")
   );
 };
