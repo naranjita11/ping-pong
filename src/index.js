@@ -48,7 +48,11 @@ const render = () => {
 
   // pass in state.value as a value prop
   ReactDOM.render(
-    <App player1={ state.player1 } player2={ state.player2 } />,
+    <App
+      player1={ state.player1 }
+      player2={ state.player2 }
+      handleP1Increment={ () => store.dispatch({ type: "INCREMENT" }) }
+    />,
     document.getElementById("root")
   );
 };
