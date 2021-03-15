@@ -8,14 +8,27 @@ import { createStore } from "redux";
 const initialState = {
   player1: 0,
   player2: 0,
+  server: 1,
 };
 
-// the reducer gets given the current version of the state
-// and the action that called it, which has a "type" property
+const player1incr = currentState => ({ ...currentState, player1: currentState.player1 + 1 });
+const player2incr = currentState => ({ ...currentState, player2: currentState.player2 + 1 });
+
+const chooseServer = currentState => {
+  const total = currentState.player1 + currentState.player2;
+  const regex = /([1-5]$)/;
+  const currentServer = regex.test(total);
+
+  return {
+    ...currentState,
+    server: currentServer ? 1 : 2 ,
+  };
+};
+
 const reducer = (currentState, action) => {
   switch (action.type) {
-    case "INCREMENTP1": return { ...currentState, player1: currentState.player1 + 1 };
-    case "INCREMENTP2": return { ...currentState, player2: currentState.player2 + 1 };
+    case "P1_SCORES": return chooseServer(player1incr(currentState));
+    case "P2_SCORES": return chooseServer(player2incr(currentState));
     case "RESET": return initialState;
     default: return currentState;
   }
@@ -28,16 +41,6 @@ const store = createStore(
     && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
-// subscribe to any changes
-store.subscribe(() => {
-  // get the current state using the getState method
-  // we can get the state, but not update it
-  let state = store.getState();
-
-  // for now, just log the new count
-  console.log(state.player2);
-});
-
 // we update subscribe to call the ReactDOM.render
 // method whenever the state changes
 const render = () => {
@@ -48,8 +51,8 @@ const render = () => {
     <App
       player1={ state.player1 }
       player2={ state.player2 }
-      handleP1Increment={ () => store.dispatch({ type: "INCREMENTP1" }) }
-      handleP2Increment={ () => store.dispatch({ type: "INCREMENTP2" }) }
+      handleP1Increment={ () => store.dispatch({ type: "P1_SCORES" }) }
+      handleP2Increment={ () => store.dispatch({ type: "P2_SCORES" }) }
       handleReset={ () => store.dispatch({ type: "RESET" }) }
     />,
     document.getElementById("root")
