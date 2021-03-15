@@ -16,6 +16,7 @@ const reducer = (currentState, action) => {
   switch (action.type) {
     case "INCREMENTP1": return { ...currentState, player1: currentState.player1 + 1 };
     case "INCREMENTP2": return { ...currentState, player2: currentState.player2 + 1 };
+    case "RESET": return initialState;
     default: return currentState;
   }
 };
@@ -49,6 +50,7 @@ const render = () => {
       player2={ state.player2 }
       handleP1Increment={ () => store.dispatch({ type: "INCREMENTP1" }) }
       handleP2Increment={ () => store.dispatch({ type: "INCREMENTP2" }) }
+      handleReset={ () => store.dispatch({ type: "RESET" }) }
     />,
     document.getElementById("root")
   );

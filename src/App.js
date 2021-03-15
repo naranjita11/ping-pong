@@ -1,5 +1,5 @@
 
-const App = ({ player1, player2, handleP1Increment, handleP2Increment }) => (
+const App = ({ player1, player2, handleP1Increment, handleP2Increment, handleReset }) => (
   <>
       {/* header */}
       <header className="jumbotron mt-4 mb-0">
@@ -39,7 +39,7 @@ const App = ({ player1, player2, handleP1Increment, handleP2Increment }) => (
       <hr />
 
       { /* reset button */}
-      <button className="btn btn-danger">Reset</button>
+      <button onClick={ handleReset } className="btn btn-danger">Reset</button>
   </>
 );
 
