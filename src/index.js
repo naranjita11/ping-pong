@@ -13,13 +13,9 @@ const initialState = {
 // the reducer gets given the current version of the state
 // and the action that called it, which has a "type" property
 const reducer = (currentState, action) => {
-  // depending on what the action's type property is
-  // we can do different things
   switch (action.type) {
-    // using object spread to create a new object
-    // with the same properties
-    case "INCREMENT": return { ...currentState, player1: currentState.player1 + 1 };
-    
+    case "INCREMENTP1": return { ...currentState, player1: currentState.player1 + 1 };
+    case "INCREMENTP2": return { ...currentState, player2: currentState.player2 + 1 };
     default: return currentState;
   }
 };
@@ -38,7 +34,7 @@ store.subscribe(() => {
   let state = store.getState();
 
   // for now, just log the new count
-  console.log(state.player1);
+  console.log(state.player2);
 });
 
 // we update subscribe to call the ReactDOM.render
@@ -51,7 +47,8 @@ const render = () => {
     <App
       player1={ state.player1 }
       player2={ state.player2 }
-      handleP1Increment={ () => store.dispatch({ type: "INCREMENT" }) }
+      handleP1Increment={ () => store.dispatch({ type: "INCREMENTP1" }) }
+      handleP2Increment={ () => store.dispatch({ type: "INCREMENTP2" }) }
     />,
     document.getElementById("root")
   );
