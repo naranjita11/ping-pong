@@ -15,19 +15,19 @@ const App = ({ player1, player2, handleP1Increment, handleP2Increment, handleRes
             <ScoreCard
                 player="1"
                 playerScore={ player1 }
-                handleClick={ winner === 0 ? handleP1Increment : null }
+                handleClick={ handleP1Increment }
                 serving={ p1serving ? "card text-center bg-dark text-white" : "card text-center" }
             />
             <ScoreCard
                 player="2"
                 playerScore={ player2 }
-                handleClick={ winner === 0 ? handleP2Increment : null }
+                handleClick={ handleP2Increment }
                 serving={ !p1serving ? "card text-center bg-dark text-white" : "card text-center" }
             />
       </div>
 
       { /* winner message */}
-      <Winner winner={ winner } />
+      <Winner />
 
       <hr />
 
