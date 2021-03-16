@@ -11,13 +11,15 @@ const App = ({ player1, player2, handleP1Increment, handleP2Increment, handleRes
       {/* scores */}
       <div className="row mb-4">
             <Score
-                player={ player1 }
-                handleClick={ handleP1Increment }
+                player="1"
+                playerScore={ player1 }
+                handleClick={ winner === 0 ? handleP1Increment : null }
                 serving={ p1serving ? "card text-center bg-dark text-white" : "card text-center" }
             />
             <Score
-                player={ player2 }
-                handleClick={ handleP2Increment }
+                player="2"
+                playerScore={ player2 }
+                handleClick={ winner === 0 ? handleP2Increment : null }
                 serving={ !p1serving ? "card text-center bg-dark text-white" : "card text-center" }
             />
       </div>
