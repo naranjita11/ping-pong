@@ -8,7 +8,7 @@ import { createStore } from "redux";
 const initialState = {
   player1: 0,
   player2: 0,
-  p1server: true,
+  p1serving: true,
 };
 
 const player1incr = currentState => ({ ...currentState, player1: currentState.player1 + 1 });
@@ -16,12 +16,13 @@ const player2incr = currentState => ({ ...currentState, player2: currentState.pl
 
 const chooseServer = currentState => {
   const total = currentState.player1 + currentState.player2;
-
   return {
     ...currentState,
-    p1server: total % 5 === 0 ? !currentState.p1server : currentState.p1server ,
+    p1serving: total % 5 === 0 ? !currentState.p1serving : currentState.p1serving ,
   };
 };
+
+
 
 const reducer = (currentState, action) => {
   switch (action.type) {
@@ -49,6 +50,7 @@ const render = () => {
     <App
       player1={ state.player1 }
       player2={ state.player2 }
+      p1serving={ state.p1serving }
       handleP1Increment={ () => store.dispatch({ type: "P1_SCORES" }) }
       handleP2Increment={ () => store.dispatch({ type: "P2_SCORES" }) }
       handleReset={ () => store.dispatch({ type: "RESET" }) }

@@ -1,5 +1,5 @@
 
-const App = ({ player1, player2, handleP1Increment, handleP2Increment, handleReset }) => (
+const App = ({ player1, player2, handleP1Increment, handleP2Increment, handleReset, p1serving }) => (
   <>
       {/* header */}
       <header className="jumbotron mt-4 mb-0">
@@ -9,7 +9,7 @@ const App = ({ player1, player2, handleP1Increment, handleP2Increment, handleRes
       {/* scores */}
       <div className="row mb-4">
           <div className="col-md-6 mt-4">
-              <div className="card text-center bg-dark text-white">
+              <div className={ p1serving ? "card text-center bg-dark text-white" : "card text-center" }>
                   <h5 className="card-header">Player 1</h5>
                   <div className="card-body">
                       <p className="card-text display-1">{ player1 }</p>
@@ -21,7 +21,7 @@ const App = ({ player1, player2, handleP1Increment, handleP2Increment, handleRes
           </div>
 
           <div className="col-md-6 mt-4">
-              <div className="card text-center">
+              <div className={ !p1serving ? "card text-center bg-dark text-white" : "card text-center" }>
                   <h5 className="card-header">Player 2</h5>
                   <div className="card-body">
                       <p className="card-text display-1">{ player2 }</p>
