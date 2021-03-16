@@ -8,7 +8,7 @@ import { createStore } from "redux";
 const initialState = {
   player1: 0,
   player2: 0,
-  server: 1,
+  p1server: true,
 };
 
 const player1incr = currentState => ({ ...currentState, player1: currentState.player1 + 1 });
@@ -16,12 +16,10 @@ const player2incr = currentState => ({ ...currentState, player2: currentState.pl
 
 const chooseServer = currentState => {
   const total = currentState.player1 + currentState.player2;
-  const regex = /([1-5]$)/;
-  const currentServer = regex.test(total);
 
   return {
     ...currentState,
-    server: currentServer ? 1 : 2 ,
+    p1server: total % 5 === 0 ? !currentState.p1server : currentState.p1server ,
   };
 };
 
