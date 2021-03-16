@@ -6,15 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import store from "./data/store";
 
-let state = store.getState();
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={ store }>
       <App
-        player1={ state.player1 }
-        player2={ state.player2 }
-        p1serving={ state.p1serving }
         handleP1Increment={ () => store.dispatch({ type: "P1_SCORES" }) }
         handleP2Increment={ () => store.dispatch({ type: "P2_SCORES" }) }
         handleReset={ () => store.dispatch({ type: "RESET" }) }
