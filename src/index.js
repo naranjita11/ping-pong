@@ -9,6 +9,7 @@ const initialState = {
   player1: 0,
   player2: 0,
   p1serving: true,
+  winner: 0
 };
 
 const player1incr = currentState => ({ ...currentState, player1: currentState.player1 + 1 });
@@ -22,12 +23,26 @@ const chooseServer = currentState => {
   };
 };
 
-
+const win = currentState => {
+  if (currentState.player1 === 21) {
+    return {
+      ...currentState,
+      winner: 1,
+    };
+  }
+  if (currentState.player2 === 21) {
+    return {
+      ...currentState,
+      winner: 2,
+    };
+  }
+  else return currentState;
+}
 
 const reducer = (currentState, action) => {
   switch (action.type) {
-    case "P1_SCORES": return chooseServer(player1incr(currentState));
-    case "P2_SCORES": return chooseServer(player2incr(currentState));
+    case "P1_SCORES": return win(chooseServer(player1incr(currentState)));
+    case "P2_SCORES": return win(chooseServer(player2incr(currentState)));
     case "RESET": return initialState;
     default: return currentState;
   }
@@ -51,6 +66,7 @@ const render = () => {
       player1={ state.player1 }
       player2={ state.player2 }
       p1serving={ state.p1serving }
+      winner={ state.winner }
       handleP1Increment={ () => store.dispatch({ type: "P1_SCORES" }) }
       handleP2Increment={ () => store.dispatch({ type: "P2_SCORES" }) }
       handleReset={ () => store.dispatch({ type: "RESET" }) }
