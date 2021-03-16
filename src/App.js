@@ -1,5 +1,7 @@
 
 import Score from "./Score";
+import Winner from "./Winner";
+import Reset from "./Reset";
 
 const App = ({ player1, player2, handleP1Increment, handleP2Increment, handleReset, p1serving, winner }) => (
   <>
@@ -25,12 +27,12 @@ const App = ({ player1, player2, handleP1Increment, handleP2Increment, handleRes
       </div>
 
       { /* winner message */}
-      { winner !== 0 ? <h2 className="alert alert-success">Player { winner } wins!</h2> : <></> }
+      <Winner winner={ winner } />
 
       <hr />
 
       { /* reset button */}
-      <button onClick={ handleReset } className="btn btn-danger">Reset</button>
+      <Reset handleClick={ handleReset } />
   </>
 );
 
