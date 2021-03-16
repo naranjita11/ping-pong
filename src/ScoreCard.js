@@ -1,4 +1,4 @@
-const Score = ({ serving, player, playerScore, handleClick }) => {
+const ScoreCard = ({ serving, player, playerScore, handleClick }) => {
 
     return (
         <>
@@ -16,4 +16,4 @@ const Score = ({ serving, player, playerScore, handleClick }) => {
         </>
     );
 }
-export default Score;
+export default ScoreCard;
