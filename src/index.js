@@ -12,39 +12,39 @@ const initialState = {
   winner: 0
 };
 
-const player1incr = currentState => ({ ...currentState, player1: currentState.player1 + 1 });
-const player2incr = currentState => ({ ...currentState, player2: currentState.player2 + 1 });
+const player1incr = state => ({ ...state, player1: state.player1 + 1 });
+const player2incr = state => ({ ...state, player2: state.player2 + 1 });
 
-const chooseServer = currentState => {
-  const total = currentState.player1 + currentState.player2;
+const chooseServer = state => {
+  const total = state.player1 + state.player2;
   return {
-    ...currentState,
-    p1serving: total % 5 === 0 ? !currentState.p1serving : currentState.p1serving ,
+    ...state,
+    p1serving: total % 5 === 0 ? !state.p1serving : state.p1serving ,
   };
 };
 
-const win = currentState => {
-  if (currentState.player1 === 21) {
+const win = state => {
+  if (state.player1 === 21) {
     return {
-      ...currentState,
+      ...state,
       winner: 1,
     };
   }
-  if (currentState.player2 === 21) {
+  if (state.player2 === 21) {
     return {
-      ...currentState,
+      ...state,
       winner: 2,
     };
   }
-  else return currentState;
+  else return state;
 }
 
-const reducer = (currentState, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
-    case "P1_SCORES": return win(chooseServer(player1incr(currentState)));
-    case "P2_SCORES": return win(chooseServer(player2incr(currentState)));
+    case "P1_SCORES": return win(chooseServer(player1incr(state)));
+    case "P2_SCORES": return win(chooseServer(player2incr(state)));
     case "RESET": return initialState;
-    default: return currentState;
+    default: return state;
   }
 };
 
