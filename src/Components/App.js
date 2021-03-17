@@ -4,7 +4,7 @@ import Reset from "./Reset";
 import ScoreCardP1 from "./ScoreCard/ScoreCardP1";
 import ScoreCardP2 from "./ScoreCard/ScoreCardP2";
 
-const App = ({ handleP1Increment, handleP2Increment }) => (
+const App = ({ handleP2Increment }) => (
   <>
       {/* header */}
       <header className="jumbotron mt-4 mb-0">
@@ -13,12 +13,8 @@ const App = ({ handleP1Increment, handleP2Increment }) => (
 
       {/* scores */}
       <div className="row mb-4">
-            <ScoreCardP1
-                handleClick={ handleP1Increment }
-            />
-            <ScoreCardP2
-                handleClick={ handleP2Increment }
-            />
+            <ScoreCardP1 />
+            <ScoreCardP2 />
       </div>
 
       { /* winner message */}

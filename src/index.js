@@ -9,11 +9,7 @@ import store from "./data/store";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={ store }>
-      <App
-        handleP1Increment={ () => store.dispatch({ type: "P1_SCORES" }) }
-        handleP2Increment={ () => store.dispatch({ type: "P2_SCORES" }) }
-        handleReset={ () => store.dispatch({ type: "RESET" }) }
-      />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root"),
