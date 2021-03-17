@@ -5,9 +5,11 @@ const player2incr = state => ({ ...state, player2: state.player2 + 1 });
 
 const chooseServer = state => {
   const total = state.player1 + state.player2;
+  const noOfServes = (state.player2 >= 20 && state.player1 >= 20) ? 2 : 5;
+
   return {
     ...state,
-    p1serving: total % 5 === 0 ? !state.p1serving : state.p1serving ,
+    p1serving: total % noOfServes === 0 ? !state.p1serving : state.p1serving ,
   };
 };
 
