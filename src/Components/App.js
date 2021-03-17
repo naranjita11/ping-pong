@@ -4,7 +4,7 @@ import Reset from "./Reset";
 import ScoreCardP1 from "./ScoreCard/ScoreCardP1";
 import ScoreCardP2 from "./ScoreCard/ScoreCardP2";
 
-const App = ({ handleP2Increment }) => (
+const App = () => (
   <>
       {/* header */}
       <header className="jumbotron mt-4 mb-0">
