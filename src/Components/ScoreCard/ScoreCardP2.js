@@ -14,7 +14,7 @@ import ScoreCard from "./ScoreCard";
 // to any other props being passed in
 const mapStateToProps = state => {
   return {
-    player: "2",
+    player: state.player2Name,
     playerScore: state.player2,
     serving: !state.p1serving,
   };
