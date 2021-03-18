@@ -5,7 +5,7 @@ const player2incr = state => ({ ...state, player2: state.player2 + 1 });
 
 const chooseServer = state => {
   const total = state.player1 + state.player2;
-  const noOfServes = (state.player2 >= 20 && state.player1 >= 20) ? 2 : 5;
+  const noOfServes = state.player2 >= (state.winningScore - 1) && state.player1 >= (state.winningScore - 1) ? 2 : state.alternateEvery;
 
   return {
     ...state,
@@ -14,13 +14,13 @@ const chooseServer = state => {
 };
 
 const win = state => {
-  if (state.player1 >= 21 && state.player2 <= (state.player1 - 2)) {
+  if (state.player1 >= state.winningScore && state.player2 <= (state.player1 - 2)) {
     return {
       ...state,
       winner: 1,
     };
   }
-  if (state.player2 >= 21 && state.player1 <= (state.player2 - 2)) {
+  if (state.player2 >= state.winningScore && state.player1 <= (state.player2 - 2)) {
     return {
       ...state,
       winner: 2,
