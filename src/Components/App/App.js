@@ -3,6 +3,7 @@ import Reset from "../Reset";
 import ScoreCardP1 from "../ScoreCard/ScoreCardP1";
 import ScoreCardP2 from "../ScoreCard/ScoreCardP2";
 import Settings from "../Settings";
+import Loading from "../Loading";
 
 const App = ({ gameStarted }) => (
     <>
@@ -10,18 +11,19 @@ const App = ({ gameStarted }) => (
             <h1>PongPing</h1>
         </header>
         
-        { !gameStarted ? <Settings /> :
-          <div>
-            <div className="row mb-4">
-                  <ScoreCardP1 />
-                  <ScoreCardP2 />
-            </div>
-            <Winner />
-            <hr />
-            <Reset />
-          </div>
-        }
-
+        <Loading>
+            { !gameStarted ? <Settings /> :
+              <div>
+                <div className="row mb-4">
+                      <ScoreCardP1 />
+                      <ScoreCardP2 />
+                </div>
+                <Winner />
+                <hr />
+                <Reset />
+              </div>
+            }
+        </Loading>
     </>
 );
 
