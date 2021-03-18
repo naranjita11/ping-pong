@@ -2,7 +2,7 @@
 // this will talk to the Provider component, which has
 // wrapped the entire app, so that it can access the store
 import { connect } from "react-redux";
-import { reset } from "../../data/actions";
+import { reset } from "../../data/actions/actions";
 
 // import the React component that we want to wrap
 // in the same directory, so path is short
