@@ -17,3 +17,17 @@ export const p2Increment = () => {
         type: "P2_SCORES",
     };
 };
+
+export const saveSettings = ({ player1Name, player2Name, winningScore, alternateEvery }) => {
+    return {
+      type: "SAVE_SETTINGS",
+  
+      // we can use the action creator to tidy up the data
+      // make sure it's definitely a number before it
+      // gets to the reducer
+      player1Name: player1Name,
+      player2Name: player2Name,
+      winningScore: +winningScore,
+      alternateEvery: +alternateEvery,
+    };
+  };

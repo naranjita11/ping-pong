@@ -29,11 +29,25 @@ const win = state => {
   else return state;
 }
 
+// destructured action object with user inputted data
+const newGameSettings = (state, { player1Name, player2Name, winningScore, alternateEvery }) => {
+  return {
+    ...state,
+    gameStarted: true,
+    player1Name: player1Name,
+    player2Name: player2Name,
+    winningScore: winningScore,
+    alternateEvery: alternateEvery,
+  };
+
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "P1_SCORES": return win(chooseServer(player1incr(state)));
     case "P2_SCORES": return win(chooseServer(player2incr(state)));
     case "RESET": return initial;
+    case "SAVE_SETTINGS": return newGameSettings(state, action);
     default: return state;
   }
 };

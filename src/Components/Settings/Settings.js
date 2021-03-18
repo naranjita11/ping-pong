@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-class Form extends Component {
+class Settings extends Component {
 
     constructor(props) {
         super(props);
@@ -8,8 +8,8 @@ class Form extends Component {
         this.state = {
             player1Name: "",
             player2Name: "",
-            winningScore: 21,
-            alternateEvery: 5,
+            winningScore: this.props.winningScore,
+            alternateEvery: this.props.alternateEvery,
         };
 
         this.handleChangeP1Name=this.handleChangeP1Name.bind(this);
@@ -36,10 +36,12 @@ class Form extends Component {
     }
 
     handleSubmit(e) {
-        
+        e.preventDefault();
+        this.props.handleSave({ ...this.state });
     }
 
     render() {
+        console.log(this.props);
         return (
             <>
                 <div className="form-group">
@@ -90,4 +92,4 @@ class Form extends Component {
 
 }
 
-export default Form;
+export default Settings;
