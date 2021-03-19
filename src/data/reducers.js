@@ -1,11 +1,11 @@
 import initial from "./initial";
 
-const player1incr = state => ({ ...state, player1: state.player1 + 1 });
-const player2incr = state => ({ ...state, player2: state.player2 + 1 });
+const player1incr = state => ({ ...state, player1Score: state.player1Score + 1 });
+const player2incr = state => ({ ...state, player2Score: state.player2Score + 1 });
 
 const chooseServer = state => {
-  const total = state.player1 + state.player2;
-  const noOfServes = state.player2 >= (state.winningScore - 1) && state.player1 >= (state.winningScore - 1) ? 2 : state.alternateEvery;
+  const total = state.player1Score + state.player2Score;
+  const noOfServes = state.player2Score >= (state.winningScore - 1) && state.player1Score >= (state.winningScore - 1) ? 2 : state.alternateEvery;
 
   return {
     ...state,
@@ -14,13 +14,13 @@ const chooseServer = state => {
 };
 
 const win = state => {
-  if (state.player1 >= state.winningScore && state.player2 <= (state.player1 - 2)) {
+  if (state.player1Score >= state.winningScore && state.player2Score <= (state.player1Score - 2)) {
     return {
       ...state,
       winner: 1,
     };
   }
-  if (state.player2 >= state.winningScore && state.player1 <= (state.player2 - 2)) {
+  if (state.player2Score >= state.winningScore && state.player1Score <= (state.player2Score - 2)) {
     return {
       ...state,
       winner: 2,
@@ -30,10 +30,11 @@ const win = state => {
 }
 
 // destructured action object with user inputted data
-const newGameSettings = (state, { player1Name, player2Name, winningScore, alternateEvery }) => {
+const newGameSettings = (state, { id, player1Name, player2Name, winningScore, alternateEvery }) => {
   return {
     ...state,
     gameStarted: true,
+    id: id,
     player1Name: player1Name,
     player2Name: player2Name,
     winningScore: winningScore,

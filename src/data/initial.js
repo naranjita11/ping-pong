@@ -1,10 +1,10 @@
 const initial = {
-    loaded: false,
+    id: 0,
     gameStarted: false,
     player1Name: "",
     player2Name: "",
-    player1: 0,
-    player2: 0,
+    player1Score: 0,
+    player2Score: 0,
     winningScore: 21,
     alternateEvery: 5,
     p1serving: true,
