@@ -2,7 +2,7 @@
 // this will talk to the Provider component, which has
 // wrapped the entire app, so that it can access the store
 import { connect } from "react-redux";
-import { p1Increment } from "../../data/actions/actions";
+import { p1Increment } from "../../data/actions/state";
 
 // import the React component that we want to wrap
 // in the same directory, so path is short
@@ -15,7 +15,7 @@ import ScoreCard from "./ScoreCard";
 const mapStateToProps = state => {
   return {
     player: state.player1Name,
-    playerScore: state.player1,
+    playerScore: state.player1Score,
     serving: state.p1serving,
   };
 };

@@ -18,16 +18,20 @@ export const p2Increment = () => {
     };
 };
 
-export const saveSettings = ({ player1Name, player2Name, winningScore, alternateEvery }) => {
+export const saveSettings = ({ id, player_1, player_2, winning_score, change_serve}) => {
     return {
       type: "SAVE_SETTINGS",
   
       // we can use the action creator to tidy up the data
       // make sure it's definitely a number before it
       // gets to the reducer
-      player1Name: player1Name,
-      player2Name: player2Name,
-      winningScore: +winningScore,
-      alternateEvery: +alternateEvery,
+      id: id,
+      player1Name: player_1.name,
+      player2Name: player_2.name,
+    //   player1Score: player_1.score,
+    //   player2Score: player_2.score,
+    //   p1serving: player_1.serving,
+      winningScore: winning_score,
+      alternateEvery: change_serve,
     };
   };

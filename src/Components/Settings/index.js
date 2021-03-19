@@ -2,7 +2,7 @@
 // this will talk to the Provider component, which has
 // wrapped the entire app, so that it can access the store
 import { connect } from "react-redux";
-import { saveSettings } from "../../data/actions/actions"
+import { postSettings } from "../../data/actions/api";
 
 // import the React component that we want to wrap
 // in the same directory, so path is short
@@ -21,7 +21,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-      handleSave: (data) => dispatch(saveSettings(data)),
+      handleSave: (data) => {
+        dispatch(postSettings(data));
+        // history.pushState("/");
+      },
     };
   };
 
